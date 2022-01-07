@@ -12,7 +12,7 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 
-PREFIX = "/"
+PREFIX = "."
 client = commands.Bot(command_prefix=PREFIX, intents=intents)
 client.remove_command('help')
 
@@ -93,7 +93,7 @@ async def help(ctx):
 
 
 # Kick User
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(administrator=True)
 async def kick(ctx, member: discord.Member, *, reason = None):
     await ctx.channel.purge(limit=1)
@@ -102,7 +102,7 @@ async def kick(ctx, member: discord.Member, *, reason = None):
     await ctx.send(f'Kick user {member.mention}')
 
 # Ban User
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(administrator=True)
 async def ban(ctx, member: discord.Member, *, reason = None):
     await ctx.channel.purge(limit=1)
@@ -111,7 +111,7 @@ async def ban(ctx, member: discord.Member, *, reason = None):
     await ctx.send(f"Ban user {member.mention}")
 
 # UnBan User
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(administrator=True)
 async def unban(ctx, *, member):
     await ctx.channel.purge(limit=1)
@@ -129,7 +129,7 @@ async def unban(ctx, *, member):
 
 # Gif command
 @client.command()
-async def gif(ctx, *, q = "Smile"):
+async def giphy(ctx, *, q = "Smile"):
     api_key = os.getenv("API_KEY")
     api_instance = giphy_client.DefaultApi()
 
