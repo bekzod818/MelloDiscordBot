@@ -12,7 +12,7 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 
-PREFIX = "."
+PREFIX = "/"
 client = commands.Bot(command_prefix=PREFIX, intents=intents)
 client.remove_command('help')
 
@@ -129,7 +129,7 @@ async def unban(ctx, *, member):
 
 # Gif command
 @client.command()
-async def giphy(ctx, *, q = "Smile"):
+async def gif(ctx, *, q = "Smile"):
     api_key = os.getenv("API_KEY")
     api_instance = giphy_client.DefaultApi()
 
